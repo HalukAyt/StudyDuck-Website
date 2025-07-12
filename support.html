@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyDuck Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FFB703;
+      --background: #FDFBF6;
+      --card: #FFFFFF;
+      --text: #333333;
+      --border: #E0DCCB;
+      --onPrimary: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --primary: #FECF4D;
+      --background: #1B1B18;
+      --card: #2A2A26;
+      --text: #F0EBD8;
+      --border: #3E3E3A;
+      --onPrimary: #000000;
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: var(--background);
+      color: var(--text);
+      padding: 2rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    h1 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: var(--primary);
+    }
+    p {
+      margin-top: 0.5rem;
+      line-height: 1.7;
+    }
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .dark-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: var(--onPrimary);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .home-button {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: var(--primary);
+      color: var(--onPrimary);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+  <button class="dark-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <header>
+    <h1>📞 StudyDuck Destek / Support</h1>
+  </header>
+  <section>
+    <h2>📬 E-posta</h2>
+    <p>Herhangi bir sorun yaşıyorsanız ya da bize geri bildirimde bulunmak istiyorsanız, aşağıdaki e-posta adresinden bize ulaşabilirsiniz:</p>
+    <p><strong>studyduckservices@gmail.com</strong></p>
+
+    <h2>❓ Sıkça Sorulan Sorular</h2>
+    <p>Gelecekte burada uygulama kullanımıyla ilgili sık sorulan sorulara da yer verilecektir.</p>
+
+    <h2>🛠 Destek Süreci</h2>
+    <p>Destek taleplerine genellikle <strong>1-2 iş günü</strong> içinde yanıt verilmektedir.</p>
+
+    <p>StudyDuck ekibi olarak sizin için buradayız!</p>
+  </section>
+
+  <footer>
+    &copy; 2025 StudyDuck. All rights reserved.
+  </footer>
+  <script>
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyDuck Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FFB703;
+      --background: #FDFBF6;
+      --card: #FFFFFF;
+      --text: #333333;
+      --border: #E0DCCB;
+      --onPrimary: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --primary: #FECF4D;
+      --background: #1B1B18;
+      --card: #2A2A26;
+      --text: #F0EBD8;
+      --border: #3E3E3A;
+      --onPrimary: #000000;
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: var(--background);
+      color: var(--text);
+      padding: 2rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    p, li {
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .dark-toggle, .home-button {
+      position: fixed;
+      top: 1rem;
+      background: var(--primary);
+      color: var(--onPrimary);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .home-button {
+      left: 1rem;
+    }
+    .dark-toggle {
+      right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+  <button class="dark-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <header>
+    <h1>🇹🇷 StudyDuck Gizlilik Politikası</h1>
+    <p>Son güncelleme: 14 Haziran 2025</p>
+  </header>
+  <section>
+    <h2>1. Toplanan Bilgiler</h2>
+    <ul>
+      <li>E-posta adresi (kayıt ve giriş için)</li>
+      <li>Yüklenen PDF dosyaları (geçici olarak işlenmekte)</li>
+      <li>Quiz sonuçları ve notlar</li>
+      <li>Cihaz bilgileri ve anonim istatistikler</li>
+    </ul>
+
+    <h2>2. Bilgilerin Kullanımı</h2>
+    <ul>
+      <li>Quiz ve not sisteminin çalışması</li>
+      <li>Kullanıcı deneyiminin kişiselleştirilmesi</li>
+      <li>Hataların tespiti ve iyileşirme çalışmaları</li>
+    </ul>
+
+    <h2>3. Üçüncü Taraf Hizmetleri</h2>
+    <ul>
+      <li>OpenAI API (soru hazırlama)</li>
+      <li>Firebase / Supabase (veri saklama ve kimlik doğrulama)</li>
+      <li>Expo / Apple Push Notification Service (bildirimler)</li>
+    </ul>
+
+    <h2>4. Veri Güvenliği</h2>
+    <p>Verileriniz güvenli sunucularda saklanır. Yetkisiz erişime karşı koruma önlemleri alınmaktadır.</p>
+
+    <h2>5. Haklarınız</h2>
+    <p>Hesabınızı silme ve verilerinizi isteme hakkınız vardır. 
+    <strong>info@studyduck.app</strong> adresine e-posta gönderebilirsiniz.</p>
+  </section>
+
+  <header>
+    <h1>🇬🇧 StudyDuck Privacy Policy</h1>
+    <p>Last Updated: June 14, 2025</p>
+  </header>
+  <section>
+    <h2>1. Information We Collect</h2>
+    <ul>
+      <li>Email address (for login and registration)</li>
+      <li>Uploaded PDF files (temporarily processed for text extraction only)</li>
+      <li>Quiz results and notes</li>
+      <li>Device info and anonymized usage data</li>
+    </ul>
+
+    <h2>2. How We Use the Data</h2>
+    <ul>
+      <li>To enable note creation and quizzes</li>
+      <li>To personalize user experience</li>
+      <li>To detect issues and improve performance</li>
+    </ul>
+
+    <h2>3. Third-Party Services</h2>
+    <ul>
+      <li>OpenAI API (question generation)</li>
+      <li>Firebase / Supabase (data storage and authentication)</li>
+      <li>Expo / Apple Push Notification Service (for notifications)</li>
+    </ul>
+
+    <h2>4. Data Security</h2>
+    <p>Your data is stored on secure servers with safeguards against unauthorized access.</p>
+
+    <h2>5. Your Rights</h2>
+    <p>You may request deletion of your account and associated data. Contact us via 
+      <strong>studyduckservices@gmail.com</strong> for any questions.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 StudyDuck. All rights reserved.
+  </footer>
+  <script>
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+</body>
+</html>

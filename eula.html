@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyDuck EULA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FFB703;
+      --background: #FDFBF6;
+      --card: #FFFFFF;
+      --text: #333333;
+      --border: #E0DCCB;
+      --onPrimary: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --primary: #FECF4D;
+      --background: #1B1B18;
+      --card: #2A2A26;
+      --text: #F0EBD8;
+      --border: #3E3E3A;
+      --onPrimary: #000000;
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: var(--background);
+      color: var(--text);
+      padding: 2rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    h1 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: var(--primary);
+    }
+    p {
+      margin-top: 0.5rem;
+      line-height: 1.7;
+    }
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .dark-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: var(--onPrimary);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .home-button {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: var(--primary);
+      color: var(--onPrimary);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+  <button class="dark-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <header>
+    <h1>End User License Agreement (EULA)</h1>
+    <p><strong>Effective Date:</strong> June 25, 2025</p>
+  </header>
+  <section>
+    <h2>1. Acknowledgement</h2>
+    <p>This EULA is concluded between the user and the developer (StudyDuck team), not with Apple. StudyDuck is solely responsible for the StudyDuck app and its content. This agreement may not conflict with the Apple Media Services Terms and Conditions.</p>
+
+    <h2>2. Scope of License</h2>
+    <p>This license is non-transferable and allows you to use the app on Apple-branded devices you own or control, according to the Apple Media Services Terms and Conditions and Family Sharing guidelines.</p>
+
+    <h2>3. Maintenance and Support</h2>
+    <p>StudyDuck is solely responsible for providing any maintenance and support for this app. Apple has no obligation to provide any maintenance or support services for this app.</p>
+
+    <h2>4. Warranty</h2>
+    <p>StudyDuck is solely responsible for any warranties. In case of failure to meet warranty standards, you may notify Apple and they will refund the purchase price. Apple holds no further responsibility under warranty laws.</p>
+
+    <h2>5. Product Claims</h2>
+    <p>StudyDuck is responsible for addressing any claims by you or a third party related to the app, including but not limited to product liability, legal or regulatory compliance, or privacy claims.</p>
+
+    <h2>6. Intellectual Property Rights</h2>
+    <p>If a third party claims that the app infringes their intellectual property rights, StudyDuck is responsible for resolving the claim, not Apple.</p>
+
+    <h2>7. Legal Compliance</h2>
+    <p>You affirm that you are not in a U.S.-embargoed country or listed as a prohibited or restricted party by the U.S. government.</p>
+
+    <h2>8. Developer Information</h2>
+    <p>Developer: Haluk Ayt<br>Address: Istanbul, Turkey<br>Email: studyduckservices@gmail.com</p>
+
+    <h2>9. Third-Party Terms of Agreement</h2>
+    <p>You agree to comply with applicable third-party terms of agreement when using StudyDuck (e.g., wireless data usage terms if using VoIP features).</p>
+
+    <h2>10. Third Party Beneficiary</h2>
+    <p>You acknowledge and agree that Apple and Apple’s subsidiaries are third-party beneficiaries of this EULA and may enforce it against you.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 StudyDuck. All rights reserved.
+  </footer>
+  <script>
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+</body>
+</html>
