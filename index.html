@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,83 +13,87 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<body data-language="tr">
+  <a class="skip-link" href="#main"><span data-lang-inline="tr">İçeriğe geç</span><span data-lang-inline="en">Skip to content</span></a>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="StudyDuck home">
       <img src="duck-logo.png" alt="" />
       <span>StudyDuck</span>
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="privacy-policy.html">Privacy</a>
-      <a href="support.html">Support</a>
-      <a href="eula.html">EULA</a>
+      <a href="index.html" aria-current="page"><span data-lang-inline="tr">Ana Sayfa</span><span data-lang-inline="en">Home</span></a>
+      <a href="privacy-policy.html"><span data-lang-inline="tr">Gizlilik</span><span data-lang-inline="en">Privacy</span></a>
+      <a href="support.html"><span data-lang-inline="tr">Destek</span><span data-lang-inline="en">Support</span></a>
+      <a href="eula.html"><span data-lang-inline="tr">Sözleşme</span><span data-lang-inline="en">EULA</span></a>
     </nav>
+    <div class="language-switcher" aria-label="Language selection">
+      <button type="button" data-lang-option="tr" aria-pressed="true">TR</button>
+      <button type="button" data-lang-option="en" aria-pressed="false">EN</button>
+    </div>
   </header>
 
   <main id="main">
     <section class="hero hero--home" aria-labelledby="hero-title">
       <div class="hero__content">
-        <p class="eyebrow">AI study companion</p>
+        <p class="eyebrow"><span data-lang-inline="tr">AI çalışma arkadaşı</span><span data-lang-inline="en">AI study companion</span></p>
         <h1 id="hero-title">StudyDuck</h1>
-        <p class="hero__lead">Turn notes and PDFs into focused quizzes, then keep improving with progress you can actually see.</p>
+        <p class="hero__lead"><span data-lang-inline="tr">Notlarını ve PDF'lerini odaklı quizlere dönüştür; ilerlemeni net şekilde görerek çalışmaya devam et.</span><span data-lang-inline="en">Turn notes and PDFs into focused quizzes, then keep improving with progress you can actually see.</span></p>
         <div class="hero__actions" aria-label="Download StudyDuck">
-          <a class="button button--primary" href="get/">Get StudyDuck</a>
-          <a class="button button--secondary" href="#features">Explore features</a>
+          <a class="button button--primary" href="get/"><span data-lang-inline="tr">StudyDuck'ı indir</span><span data-lang-inline="en">Get StudyDuck</span></a>
+          <a class="button button--secondary" href="#features"><span data-lang-inline="tr">Özellikleri keşfet</span><span data-lang-inline="en">Explore features</span></a>
         </div>
       </div>
     </section>
 
     <section class="section section--tight" id="features" aria-labelledby="features-title">
       <div class="section__header">
-        <p class="eyebrow">Built for study sessions</p>
-        <h2 id="features-title">From materials to practice in minutes.</h2>
+        <p class="eyebrow"><span data-lang-inline="tr">Çalışma oturumları için</span><span data-lang-inline="en">Built for study sessions</span></p>
+        <h2 id="features-title"><span data-lang-inline="tr">Materyalden pratiğe dakikalar içinde.</span><span data-lang-inline="en">From materials to practice in minutes.</span></h2>
       </div>
       <div class="feature-grid">
         <article class="feature-card">
           <span class="feature-card__icon" aria-hidden="true">PDF</span>
-          <h3>Upload PDFs</h3>
-          <p>Import lecture notes, textbooks, summaries, and handouts without rebuilding your study set by hand.</p>
+          <h3><span data-lang-inline="tr">PDF Yükle</span><span data-lang-inline="en">Upload PDFs</span></h3>
+          <p><span data-lang-inline="tr">Ders notlarını, kitap bölümlerini, özetleri ve dokümanları manuel set hazırlamadan içe aktar.</span><span data-lang-inline="en">Import lecture notes, textbooks, summaries, and handouts without rebuilding your study set by hand.</span></p>
         </article>
         <article class="feature-card">
           <span class="feature-card__icon" aria-hidden="true">AI</span>
-          <h3>Generate Quizzes</h3>
-          <p>Create quiz questions from your documents so every session can start with active recall.</p>
+          <h3><span data-lang-inline="tr">Quiz Oluştur</span><span data-lang-inline="en">Generate Quizzes</span></h3>
+          <p><span data-lang-inline="tr">Dokümanlarından sorular üret; her çalışma oturumuna aktif hatırlama ile başla.</span><span data-lang-inline="en">Create quiz questions from your documents so every session can start with active recall.</span></p>
         </article>
         <article class="feature-card">
           <span class="feature-card__icon" aria-hidden="true">%</span>
-          <h3>Track Progress</h3>
-          <p>See results over time, spot weaker topics, and return to the material that needs more attention.</p>
+          <h3><span data-lang-inline="tr">İlerlemeyi Takip Et</span><span data-lang-inline="en">Track Progress</span></h3>
+          <p><span data-lang-inline="tr">Sonuçlarını zaman içinde gör, zayıf konuları fark et ve daha çok çalışman gereken yerlere geri dön.</span><span data-lang-inline="en">See results over time, spot weaker topics, and return to the material that needs more attention.</span></p>
         </article>
       </div>
     </section>
 
     <section class="section section--split" aria-labelledby="workflow-title">
       <div>
-        <p class="eyebrow">Simple workflow</p>
-        <h2 id="workflow-title">Study without losing momentum.</h2>
+        <p class="eyebrow"><span data-lang-inline="tr">Basit akış</span><span data-lang-inline="en">Simple workflow</span></p>
+        <h2 id="workflow-title"><span data-lang-inline="tr">Ritmini kaybetmeden çalış.</span><span data-lang-inline="en">Study without losing momentum.</span></h2>
       </div>
       <ol class="steps" aria-label="StudyDuck workflow">
         <li>
           <span>1</span>
-          <p>Add your study material.</p>
+          <p><span data-lang-inline="tr">Çalışma materyalini ekle.</span><span data-lang-inline="en">Add your study material.</span></p>
         </li>
         <li>
           <span>2</span>
-          <p>Generate a quiz from the content.</p>
+          <p><span data-lang-inline="tr">İçerikten quiz oluştur.</span><span data-lang-inline="en">Generate a quiz from the content.</span></p>
         </li>
         <li>
           <span>3</span>
-          <p>Review answers and keep practicing.</p>
+          <p><span data-lang-inline="tr">Cevapları gözden geçir ve pratik yapmaya devam et.</span><span data-lang-inline="en">Review answers and keep practicing.</span></p>
         </li>
       </ol>
     </section>
 
     <section class="section section--tight" aria-labelledby="updates-title">
       <div class="section__header">
-        <p class="eyebrow">Updates</p>
-        <h2 id="updates-title">Latest notes from StudyDuck.</h2>
+        <p class="eyebrow"><span data-lang-inline="tr">Güncellemeler</span><span data-lang-inline="en">Updates</span></p>
+        <h2 id="updates-title"><span data-lang-inline="tr">StudyDuck'tan son notlar.</span><span data-lang-inline="en">Latest notes from StudyDuck.</span></h2>
       </div>
       <div class="embed-panel">
         <div id="soro-blog"></div>
@@ -101,10 +105,11 @@
   <footer class="site-footer">
     <p>&copy; 2025 StudyDuck. All rights reserved.</p>
     <nav aria-label="Footer navigation">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="support.html">Support</a>
-      <a href="eula.html">EULA</a>
+      <a href="privacy-policy.html"><span data-lang-inline="tr">Gizlilik Politikası</span><span data-lang-inline="en">Privacy Policy</span></a>
+      <a href="support.html"><span data-lang-inline="tr">Destek</span><span data-lang-inline="en">Support</span></a>
+      <a href="eula.html"><span data-lang-inline="tr">Sözleşme</span><span data-lang-inline="en">EULA</span></a>
     </nav>
   </footer>
+  <script src="language.js" defer></script>
 </body>
 </html>

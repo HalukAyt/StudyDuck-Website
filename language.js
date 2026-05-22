@@ -2,6 +2,7 @@
   const body = document.body;
   const buttons = Array.from(document.querySelectorAll("[data-lang-option]"));
   const panels = Array.from(document.querySelectorAll("[data-lang-panel]"));
+  const availableLanguages = buttons.map((button) => button.dataset.langOption).filter(Boolean);
   const defaultLanguage = body.getAttribute("data-language") || "tr";
 
   function readLanguage() {
@@ -21,7 +22,9 @@
   }
 
   function setLanguage(language) {
-    const activeLanguage = panels.some((panel) => panel.dataset.langPanel === language) ? language : defaultLanguage;
+    const hasPanel = panels.some((panel) => panel.dataset.langPanel === language);
+    const hasButton = availableLanguages.includes(language);
+    const activeLanguage = hasPanel || hasButton ? language : defaultLanguage;
 
     body.setAttribute("data-language", activeLanguage);
     document.documentElement.setAttribute("lang", activeLanguage);
