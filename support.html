@@ -1,67 +1,103 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Contact StudyDuck support for help, feedback, and account questions." />
+  <meta name="description" content="StudyDuck destek sayfası ve support contact information." />
   <title>StudyDuck Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<body data-language="tr">
+  <a class="skip-link" href="#main">İçeriğe geç</a>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="StudyDuck home">
+    <a class="brand" href="index.html" aria-label="StudyDuck ana sayfa">
       <img src="duck-logo.png" alt="" />
       <span>StudyDuck</span>
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="privacy-policy.html">Privacy</a>
-      <a href="support.html" aria-current="page">Support</a>
-      <a href="eula.html">EULA</a>
+      <a href="index.html"><span data-lang-inline="tr">Ana Sayfa</span><span data-lang-inline="en">Home</span></a>
+      <a href="privacy-policy.html"><span data-lang-inline="tr">Gizlilik</span><span data-lang-inline="en">Privacy</span></a>
+      <a href="support.html" aria-current="page"><span data-lang-inline="tr">Destek</span><span data-lang-inline="en">Support</span></a>
+      <a href="eula.html"><span data-lang-inline="tr">Sözleşme</span><span data-lang-inline="en">EULA</span></a>
     </nav>
-    <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle>
-      <span class="theme-toggle__icon" aria-hidden="true"></span>
-    </button>
+    <div class="language-switcher" aria-label="Language selection">
+      <button type="button" data-lang-option="tr" aria-pressed="true">TR</button>
+      <button type="button" data-lang-option="en" aria-pressed="false">EN</button>
+    </div>
   </header>
 
   <main id="main">
-    <section class="content-hero" aria-labelledby="support-title">
-      <p class="eyebrow">Support</p>
-      <h1 id="support-title">How can we help?</h1>
-      <p>Send feedback, report an issue, or ask about your StudyDuck account. We usually reply within 1-2 business days.</p>
-    </section>
+    <div class="language-panel" data-lang-panel="tr" lang="tr">
+      <section class="content-hero" aria-labelledby="support-title-tr">
+        <p class="eyebrow">Destek</p>
+        <h1 id="support-title-tr">Yardıma mı ihtiyacınız var?</h1>
+        <p>StudyDuck ile ilgili soru, geri bildirim, hata bildirimi veya hesap talepleriniz için bizimle iletişime geçebilirsiniz.</p>
+      </section>
 
-    <section class="content-panel" aria-label="Support details">
-      <div class="support-list">
-        <div class="support-item">
-          <h2>Email</h2>
-          <p>Contact the StudyDuck team at <strong>studyduckservices@gmail.com</strong>.</p>
+      <section class="content-panel" aria-label="Destek bilgileri">
+        <div class="support-list">
+          <div class="support-item">
+            <h2>E-posta</h2>
+            <p>Bize <strong>studyduckservices@gmail.com</strong> adresinden ulaşabilirsiniz.</p>
+          </div>
+          <div class="support-item">
+            <h2>Yanıt süresi</h2>
+            <p>Destek taleplerine genellikle <strong>1-2 iş günü</strong> içinde yanıt veriyoruz.</p>
+          </div>
+          <div class="support-item">
+            <h2>Mesajınıza ekleyebileceğiniz bilgiler</h2>
+            <p>Sorunu daha hızlı çözebilmemiz için cihaz modelinizi, işletim sistemi sürümünüzü, StudyDuck uygulama sürümünü, kısa bir açıklamayı ve varsa ekran görüntülerini paylaşabilirsiniz.</p>
+          </div>
+          <div class="support-item">
+            <h2>Hesap ve veri talepleri</h2>
+            <p>Hesap silme, veri erişimi veya gizlilik talepleri için StudyDuck hesabınıza bağlı e-posta adresinden bizimle iletişime geçmeniz gerekir.</p>
+          </div>
         </div>
-        <div class="support-item">
-          <h2>Helpful details to include</h2>
-          <p>Please include your device type, app version, a short description of the issue, and screenshots when they help explain what happened.</p>
+      </section>
+    </div>
+
+    <div class="language-panel" data-lang-panel="en" lang="en">
+      <section class="content-hero" aria-labelledby="support-title-en">
+        <p class="eyebrow">Support</p>
+        <h1 id="support-title-en">Need help?</h1>
+        <p>Contact us for StudyDuck questions, feedback, bug reports, account requests, or privacy-related requests.</p>
+      </section>
+
+      <section class="content-panel" aria-label="Support details">
+        <div class="support-list">
+          <div class="support-item">
+            <h2>Email</h2>
+            <p>Reach us at <strong>studyduckservices@gmail.com</strong>.</p>
+          </div>
+          <div class="support-item">
+            <h2>Response time</h2>
+            <p>We usually respond to support requests within <strong>1-2 business days</strong>.</p>
+          </div>
+          <div class="support-item">
+            <h2>Details to include</h2>
+            <p>To help us solve the issue faster, please include your device model, operating system version, StudyDuck app version, a short description, and screenshots when available.</p>
+          </div>
+          <div class="support-item">
+            <h2>Account and data requests</h2>
+            <p>For account deletion, data access, or privacy requests, please contact us from the email address linked to your StudyDuck account.</p>
+          </div>
         </div>
-        <div class="support-item">
-          <h2>Account and data requests</h2>
-          <p>For account deletion or data questions, email us from the address linked to your StudyDuck account.</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <p>&copy; 2025 StudyDuck. All rights reserved.</p>
     <nav aria-label="Footer navigation">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="support.html">Support</a>
-      <a href="eula.html">EULA</a>
+      <a href="privacy-policy.html"><span data-lang-inline="tr">Gizlilik Politikası</span><span data-lang-inline="en">Privacy Policy</span></a>
+      <a href="support.html"><span data-lang-inline="tr">Destek</span><span data-lang-inline="en">Support</span></a>
+      <a href="eula.html"><span data-lang-inline="tr">Sözleşme</span><span data-lang-inline="en">EULA</span></a>
     </nav>
   </footer>
 
-  <script src="theme.js" defer></script>
+  <script src="language.js" defer></script>
 </body>
 </html>
