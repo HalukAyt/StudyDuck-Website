@@ -1,129 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact StudyDuck support for help, feedback, and account questions." />
   <title>StudyDuck Support</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #FFB703;
-      --background: #FDFBF6;
-      --card: #FFFFFF;
-      --text: #333333;
-      --border: #E0DCCB;
-      --onPrimary: #ffffff;
-    }
-
-    [data-theme="dark"] {
-      --primary: #FECF4D;
-      --background: #1B1B18;
-      --card: #2A2A26;
-      --text: #F0EBD8;
-      --border: #3E3E3A;
-      --onPrimary: #000000;
-    }
-
-    * {
-      margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif;
-    }
-    body {
-      background: var(--background);
-      color: var(--text);
-      padding: 2rem;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    h1 {
-      color: var(--primary);
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-    h2 {
-      margin-top: 2rem;
-      color: var(--primary);
-    }
-    p {
-      margin-top: 0.5rem;
-      line-height: 1.7;
-    }
-    section {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      border: 1px solid var(--border);
-    }
-    footer {
-      margin-top: 3rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-    .dark-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--primary);
-      color: var(--onPrimary);
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .home-button {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      background: var(--primary);
-      color: var(--onPrimary);
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <button class="home-button" onclick="window.location.href='index.html'">Home</button>
-  <button class="dark-toggle" onclick="toggleTheme()">Toggle Theme</button>
-  <header>
-    <h1>📞 StudyDuck Support</h1>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="StudyDuck home">
+      <img src="duck-logo.png" alt="" />
+      <span>StudyDuck</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="support.html" aria-current="page">Support</a>
+      <a href="eula.html">EULA</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle>
+      <span class="theme-toggle__icon" aria-hidden="true"></span>
+    </button>
   </header>
-  <section>
-    <h2>📬 Email</h2>
-    <p>If you are experiencing any issues or would like to provide feedback, feel free to contact us via email:</p>
-    <p><strong>studyduckservices@gmail.com</strong></p>
 
-    <h2>❓ Frequently Asked Questions</h2>
-    <p>We will provide common questions and answers about using the app here in the future.</p>
+  <main id="main">
+    <section class="content-hero" aria-labelledby="support-title">
+      <p class="eyebrow">Support</p>
+      <h1 id="support-title">How can we help?</h1>
+      <p>Send feedback, report an issue, or ask about your StudyDuck account. We usually reply within 1-2 business days.</p>
+    </section>
 
-    <h2>🛠 Support Response Time</h2>
-    <p>We usually respond to support requests within <strong>1–2 business days</strong>.</p>
+    <section class="content-panel" aria-label="Support details">
+      <div class="support-list">
+        <div class="support-item">
+          <h2>Email</h2>
+          <p>Contact the StudyDuck team at <strong>studyduckservices@gmail.com</strong>.</p>
+        </div>
+        <div class="support-item">
+          <h2>Helpful details to include</h2>
+          <p>Please include your device type, app version, a short description of the issue, and screenshots when they help explain what happened.</p>
+        </div>
+        <div class="support-item">
+          <h2>Account and data requests</h2>
+          <p>For account deletion or data questions, email us from the address linked to your StudyDuck account.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <p>The StudyDuck team is here for you!</p>
-  </section>
-
-  <footer>
-    &copy; 2025 StudyDuck. All rights reserved.
+  <footer class="site-footer">
+    <p>&copy; 2025 StudyDuck. All rights reserved.</p>
+    <nav aria-label="Footer navigation">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="support.html">Support</a>
+      <a href="eula.html">EULA</a>
+    </nav>
   </footer>
-  <script>
-    function toggleTheme() {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
-    }
-    (function() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    })();
-  </script>
+
+  <script src="theme.js" defer></script>
 </body>
 </html>
