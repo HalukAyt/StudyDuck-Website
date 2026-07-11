@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="StudyDuck çalışma alanı: kaynak ekle, Ask Duck ile sorular sor, notlarından quiz oluştur." />
+  <meta property="og:title" content="StudyDuck Çalışma Alanı" />
+  <meta property="og:description" content="Create notebooks and quizzes from your study materials." />
+  <meta property="og:image" content="duck-logo.png" />
+  <title>StudyDuck - Çalışma Alanı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-language="tr" class="study-page">
+  <a class="skip-link" href="#main"><span data-lang-inline="tr">İçeriğe geç</span><span data-lang-inline="en">Skip to content</span></a>
+  <header class="site-header" data-site-chrome>
+    <a class="brand" href="index.html" aria-label="StudyDuck home">
+      <img src="duck-logo.png" alt="" />
+      <span>StudyDuck</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html"><span data-lang-inline="tr">Ana Sayfa</span><span data-lang-inline="en">Home</span></a>
+      <a href="study.html" aria-current="page"><span data-lang-inline="tr">Başla</span><span data-lang-inline="en">Start</span></a>
+      <a href="privacy-policy.html"><span data-lang-inline="tr">Gizlilik</span><span data-lang-inline="en">Privacy</span></a>
+      <a href="support.html"><span data-lang-inline="tr">Destek</span><span data-lang-inline="en">Support</span></a>
+      <a href="eula.html"><span data-lang-inline="tr">Sözleşme</span><span data-lang-inline="en">EULA</span></a>
+    </nav>
+    <div class="language-switcher" aria-label="Language selection">
+      <button type="button" data-lang-option="tr" aria-pressed="true">TR</button>
+      <button type="button" data-lang-option="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main id="main" class="study-shell" data-app-root>
+    <section class="study-auth-hero" data-auth-panel aria-labelledby="login-title">
+      <div class="study-auth-copy">
+        <p class="eyebrow">StudyDuck Web</p>
+        <h1 id="study-title">Notlarından çalışma alanı oluştur.</h1>
+        <p>PDF veya metin ekle, defterini düzenle, aynı nottan quiz çöz ve Ask Duck ile konuş. Mobil hesabınla aynı API üzerinden çalışır.</p>
+        <div class="study-feature-row" aria-label="StudyDuck web features">
+          <span>Çalışma defteri</span>
+          <span>Quiz</span>
+          <span>Ask Duck</span>
+        </div>
+      </div>
+
+      <div class="study-login-card">
+        <p class="eyebrow">Hesap</p>
+        <h2 id="login-title">Giriş yap</h2>
+        <form class="study-form" data-login-form>
+          <label>
+            E-posta
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label>
+            Şifre
+            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <label class="study-check">
+            <input type="checkbox" name="rememberMe" checked />
+            Beni hatırla
+          </label>
+          <button class="button button--primary" type="submit">Giriş yap</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="notebook-app" data-workspace hidden>
+      <header class="notebook-topbar">
+        <button class="notebook-brand" type="button" data-action="library-home" aria-label="Not defterlerine dön">
+          <img src="duck-logo.png" alt="" />
+          <span>StudyDuck</span>
+        </button>
+        <div class="notebook-topbar__actions">
+          <span id="session-status">Bağlantı hazırlanıyor</span>
+          <button class="button button--secondary button--compact" type="button" data-action="logout">Çıkış</button>
+        </div>
+      </header>
+
+      <section class="notebook-library" data-library-screen aria-labelledby="library-title">
+        <div class="library-tabs" aria-label="Çalışma filtreleri">
+          <button type="button" aria-pressed="true">Tümü</button>
+          <button type="button">Çalışma defterlerim</button>
+        </div>
+
+        <div class="library-toolbar">
+          <div>
+            <p class="eyebrow">Kütüphane</p>
+            <h1 id="library-title">Çalışma defterlerin</h1>
+          </div>
+          <div class="library-toolbar__actions">
+            <button class="icon-button" type="button" data-action="refresh-notes" aria-label="Yenile" title="Yenile">↻</button>
+            <button class="button button--primary button--compact" type="button" data-action="create-notebook">+ Yeni oluştur</button>
+          </div>
+        </div>
+
+        <section class="library-section" aria-labelledby="featured-title">
+          <h2 id="featured-title">Defterlerin</h2>
+          <div class="notebook-card-grid" data-notebook-grid></div>
+        </section>
+
+        <section class="library-section" aria-labelledby="recent-title">
+          <h2 id="recent-title">Son çalışmalar</h2>
+          <div class="recent-card-grid" data-recent-grid></div>
+        </section>
+      </section>
+
+      <section class="notebook-workbench" data-notebook-screen hidden aria-labelledby="notebook-title">
+        <header class="notebook-detail-bar">
+          <div class="notebook-detail-title">
+            <button class="icon-button" type="button" data-action="library-home" aria-label="Kütüphaneye dön">←</button>
+            <div>
+              <p class="eyebrow">Çalışma</p>
+              <h1 id="notebook-title" data-notebook-title>Yeni çalışma defteri</h1>
+            </div>
+          </div>
+          <div class="notebook-detail-actions">
+            <button class="button button--primary button--compact" type="button" data-action="toggle-source-form">+ Kaynak ekle</button>
+            <button class="button button--secondary button--compact" type="button" data-action="start-quiz">Quiz oluştur</button>
+            <button class="button button--danger button--compact" type="button" data-action="delete-notebook">Defteri sil</button>
+          </div>
+        </header>
+
+        <div class="notebook-columns">
+          <aside class="sources-panel" aria-label="Kaynaklar">
+            <div class="panel-heading">
+              <h2>Kaynaklar</h2>
+              <button class="icon-button" type="button" data-action="toggle-source-form" aria-label="Kaynak ekle">+</button>
+            </div>
+
+            <form class="source-form" data-note-form hidden>
+              <div class="source-form__head">
+                <div>
+                  <span class="eyebrow">Kaynak</span>
+                  <strong>Belge veya metin ekle</strong>
+                </div>
+                <button class="icon-button" type="button" data-action="toggle-source-form" aria-label="Kaynak panelini kapat">×</button>
+              </div>
+
+              <label class="source-field">
+                Başlık
+                <input type="text" name="title" placeholder="Örn. Biyoloji 3. ünite" required />
+              </label>
+              <label class="source-field">
+                Defter adı
+                <input type="text" name="groupName" placeholder="Boşsa bu deftere eklenir" />
+              </label>
+
+              <label class="source-upload">
+                <input type="file" name="pdf" accept="application/pdf" />
+                <span class="source-upload__icon">↑</span>
+                <strong>PDF dosyanı buraya bırak</strong>
+                <small data-file-name>veya seçmek için tıkla</small>
+              </label>
+
+              <label class="source-field">
+                İçerik
+                <textarea name="content" rows="8" placeholder="PDF seçebilir veya çalışma metnini buraya yapıştırabilirsin."></textarea>
+              </label>
+              <div class="study-actions">
+                <button class="button button--secondary button--compact" type="button" data-action="extract-pdf">PDF metnini çıkar</button>
+                <button class="button button--primary button--compact" type="submit">Kaynağı kaydet</button>
+              </div>
+            </form>
+
+            <div class="study-list" data-notes-list></div>
+          </aside>
+
+          <section class="chat-canvas" aria-label="Ask Duck">
+            <header class="chat-canvas__top">
+              <h2>Ask Duck</h2>
+              <button class="icon-button" type="button" data-action="refresh-notes" aria-label="Yenile" title="Yenile">↻</button>
+            </header>
+            <div class="note-hero" data-note-detail></div>
+            <div class="chat-log" data-chat-log aria-live="polite"></div>
+            <form class="chat-form" data-chat-form>
+              <input type="text" name="question" placeholder="Yazmaya başlayın..." autocomplete="off" disabled />
+              <button class="icon-button" type="submit" disabled aria-label="Sor">→</button>
+            </form>
+          </section>
+
+          <aside class="studio-panel" aria-label="Quiz">
+            <div class="panel-heading">
+              <h2>Quiz</h2>
+            </div>
+            <div class="studio-output" data-quiz-panel>
+              <div data-quiz-content>
+                <p class="study-muted">Bir kaynak seçince buradan quiz oluşturabilirsin.</p>
+                <button class="button button--primary" type="button" data-action="start-quiz" disabled>Quiz oluştur</button>
+              </div>
+            </div>
+            <button class="button button--primary studio-add" type="button" data-action="toggle-source-form">Not ekle</button>
+          </aside>
+        </div>
+      </section>
+    </section>
+
+    <div class="study-toast" data-toast hidden></div>
+  </main>
+
+  <footer class="site-footer" data-site-chrome>
+    <p>&copy; 2025 StudyDuck. All rights reserved.</p>
+    <nav aria-label="Footer navigation">
+      <a href="privacy-policy.html"><span data-lang-inline="tr">Gizlilik Politikası</span><span data-lang-inline="en">Privacy Policy</span></a>
+      <a href="support.html"><span data-lang-inline="tr">Destek</span><span data-lang-inline="en">Support</span></a>
+      <a href="eula.html"><span data-lang-inline="tr">Sözleşme</span><span data-lang-inline="en">EULA</span></a>
+    </nav>
+  </footer>
+
+  <script src="language.js" defer></script>
+  <script src="study.js" defer></script>
+</body>
+</html>
