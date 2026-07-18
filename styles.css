@@ -1918,20 +1918,25 @@ select:disabled {
 
 .chat-canvas {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   border-radius: 8px;
   margin-top: 0;
   padding: 1rem;
   overflow: hidden;
 }
 
-.note-hero {
+.conversation-scroll {
   min-height: 0;
+  overflow: auto;
+  padding-right: 0.35rem;
+}
+
+.note-hero {
   display: grid;
   align-content: start;
   gap: 1.1rem;
-  overflow: auto;
-  padding: clamp(1.2rem, 4vw, 2.4rem) 1.5rem 1.25rem;
+  overflow: visible;
+  padding: clamp(1.2rem, 4vw, 2.4rem) 1.5rem 1.75rem;
 }
 
 .note-processing {
@@ -1996,6 +2001,7 @@ select:disabled {
 
 .note-content {
   width: min(100%, 860px);
+  max-height: none;
   overflow: visible;
   padding: 0;
   border: 0;
@@ -2028,6 +2034,7 @@ select:disabled {
 .note-suggestions {
   display: grid;
   gap: 0.55rem;
+  margin-top: 0.75rem;
   padding: 0;
 }
 
@@ -2059,18 +2066,70 @@ select:disabled {
 
 .chat-log {
   align-content: start;
-  min-height: 0;
+  min-height: auto;
   max-height: none;
   overflow: visible;
-  padding: 0;
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border-top: 1px solid #303840;
 }
 
-.chat-message {
-  background: #2a3037;
+.chat-empty {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--muted);
 }
 
-.chat-message--user {
-  background: #31384b;
+.chat-empty strong {
+  color: #ffffff;
+}
+
+.chat-thread {
+  display: grid;
+  gap: 1.25rem;
+  padding-top: 0.5rem;
+}
+
+.chat-turn {
+  display: grid;
+  width: min(100%, 860px);
+}
+
+.chat-turn--user {
+  justify-items: end;
+}
+
+.chat-turn__content {
+  color: #f7f9fb;
+  line-height: 1.68;
+}
+
+.chat-turn--user .chat-turn__content {
+  width: fit-content;
+  max-width: min(620px, 78%);
+  padding: 0.95rem 1.15rem;
+  border-radius: 16px;
+  background: #171d23;
+}
+
+.chat-turn--assistant .chat-turn__content {
+  width: min(100%, 860px);
+  font-size: clamp(1rem, 1.18vw, 1.08rem);
+}
+
+.chat-bullet {
+  display: block;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.chat-bullet::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
 }
 
 .chat-form {
@@ -2097,7 +2156,7 @@ select:disabled {
 
 .studio-panel {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
   border-right: 0;
   border-radius: 8px 0 0 8px;
   padding: 1rem;
@@ -2136,11 +2195,6 @@ select:disabled {
   min-height: 0;
   overflow: auto;
   padding-top: 1rem;
-}
-
-.studio-add {
-  justify-self: center;
-  margin-top: 1rem;
 }
 
 .study-muted {

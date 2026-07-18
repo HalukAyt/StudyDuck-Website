@@ -118,7 +118,6 @@
           </div>
           <div class="notebook-detail-actions">
             <button class="button button--primary button--compact" type="button" data-action="toggle-source-form">+ Kaynak ekle</button>
-            <button class="button button--secondary button--compact" type="button" data-action="start-quiz">Quiz oluştur</button>
             <button class="button button--danger button--compact" type="button" data-action="delete-notebook">Defteri sil</button>
           </div>
         </header>
@@ -127,7 +126,6 @@
           <aside class="sources-panel" aria-label="Kaynaklar">
             <div class="panel-heading">
               <h2>Kaynaklar</h2>
-              <button class="icon-button" type="button" data-action="toggle-source-form" aria-label="Kaynak ekle">+</button>
             </div>
 
             <form class="source-form" data-note-form hidden>
@@ -173,8 +171,10 @@
               <h2>Ask Duck</h2>
               <button class="icon-button" type="button" data-action="refresh-notes" aria-label="Yenile" title="Yenile">↻</button>
             </header>
-            <div class="note-hero" data-note-detail></div>
-            <div class="chat-log" data-chat-log aria-live="polite"></div>
+            <div class="conversation-scroll" data-conversation>
+              <div class="note-hero" data-note-detail></div>
+              <div class="chat-log" data-chat-log aria-live="polite"></div>
+            </div>
             <form class="chat-form" data-chat-form>
               <input type="text" name="question" placeholder="Yazmaya başlayın..." autocomplete="off" disabled />
               <button class="icon-button" type="submit" disabled aria-label="Sor">→</button>
@@ -191,7 +191,6 @@
                 <button class="button button--primary" type="button" data-action="start-quiz" disabled>Quiz oluştur</button>
               </div>
             </div>
-            <button class="button button--primary studio-add" type="button" data-action="toggle-source-form">Not ekle</button>
           </aside>
         </div>
       </section>

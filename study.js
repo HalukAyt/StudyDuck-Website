@@ -352,8 +352,8 @@
         </div>
         ${state.activeNote.fileUrl ? `<a class="button button--secondary button--compact" href="${escapeHtml(state.activeNote.fileUrl)}" target="_blank" rel="noreferrer">PDF</a>` : ""}
       </div>
-      <div class="note-content">${formatNotebookContent(state.activeNote.content)}</div>
-      ${renderSuggestedQuestions(state.activeNote)}`;
+      <div class="note-content">${formatNotebookContent(state.activeNote.content)}</div>`;
+    renderChat([]);
   }
 
   function renderSuggestedQuestions(note) {
@@ -454,20 +454,33 @@
 
     if (!messages.length) {
       els.chatLog.innerHTML = state.activeNote
-        ? `<p class="study-muted"><strong>${escapeHtml(state.activeNote.title)}</strong> hakkında soru sorabilirsin.</p>`
-        : `<p class="study-muted">Kaynak ekleyince Ask Duck burada cevap verir.</p>`;
+        ? `
+          <div class="chat-empty">
+            <strong>Ask Duck'a sor</strong>
+            <span>${escapeHtml(state.activeNote.title)} hakkında hızlıca soru sorabilirsin.</span>
+            ${renderSuggestedQuestions(state.activeNote)}
+          </div>`
+        : `<div class="chat-empty"><span>Kaynak ekleyince Ask Duck burada cevap verir.</span></div>`;
       return;
     }
 
-    els.chatLog.innerHTML = messages.map((message) => {
+    els.chatLog.innerHTML = `<div class="chat-thread">${messages.map((message) => {
       const role = (message.role || message.Role) === "user" ? "user" : "assistant";
+      const content = message.content || message.Content || "";
       return `
-        <div class="chat-message chat-message--${role}">
-          <span>${role === "user" ? "Sen" : "Duck"}</span>
-          <p>${escapeHtml(message.content || message.Content || "")}</p>
+        <div class="chat-turn chat-turn--${role}">
+          <div class="chat-turn__content">${formatChatContent(content)}</div>
         </div>`;
-    }).join("");
+    }).join("")}</div>`;
     els.chatLog.scrollTop = els.chatLog.scrollHeight;
+  }
+
+  function formatChatContent(content) {
+    return escapeHtml(content || "")
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/^- (.*)$/gm, "<span class=\"chat-bullet\">$1</span>")
+      .replace(/\n{2,}/g, "<br><br>")
+      .replace(/\n/g, "<br>");
   }
 
   function updateActionAvailability() {
@@ -493,6 +506,54 @@
 
   function estimateWords(content) {
     return String(content || "").trim().split(/\s+/).filter(Boolean).length;
+  }
+
+  function detectQuestionLanguage(text) {
+    const value = String(text || "").trim().toLowerCase();
+    if (!value) return document.body.dataset.language || "tr";
+
+    if (/[çğıöşü]/i.test(value)) return "tr";
+    if (/[\u0400-\u04ff]/.test(value)) return "ru";
+    if (/[\u0370-\u03ff]/.test(value)) return "el";
+    if (/[\u3040-\u30ff]/.test(value)) return "ja";
+    if (/[\uac00-\ud7af]/.test(value)) return "ko";
+    if (/[\u4e00-\u9fff]/.test(value)) return "zh";
+    if (/[\u0600-\u06ff]/.test(value)) return /[پچژگکی]/.test(value) ? "fa" : "ar";
+
+    const words = value.match(/[a-zà-ÿ]+/gi) || [];
+    const score = (list) => words.reduce((total, word) => total + (list.includes(word) ? 1 : 0), 0);
+    const scores = {
+      tr: score(["mı", "mi", "mu", "mü", "nedir", "nasil", "nasıl", "neden", "niye", "hangi", "bana", "acikla", "açıkla", "ozetle", "özetle", "ornek", "örnek", "konu", "hakkinda", "hakkında", "nelerdir", "fark", "arasindaki", "arasındaki"]),
+      en: score(["what", "why", "how", "when", "which", "explain", "summarize", "summary", "example", "difference", "between", "does", "is", "are", "can", "should"]),
+      de: score(["was", "warum", "wie", "wann", "welche", "erkläre", "erklaere", "zusammenfassung", "beispiel", "unterschied"]),
+      es: score(["qué", "que", "por", "cómo", "como", "cuándo", "cuando", "explica", "resume", "ejemplo", "diferencia"]),
+      fr: score(["quoi", "pourquoi", "comment", "quand", "explique", "résume", "resume", "exemple", "différence"]),
+      it: score(["cosa", "perché", "perche", "come", "quando", "spiega", "riassumi", "esempio", "differenza"]),
+      pt: score(["o", "que", "por", "como", "quando", "explique", "resuma", "exemplo", "diferença"])
+    };
+
+    const best = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
+    if (best && best[1] > 0) return best[0];
+
+    return document.body.dataset.language || "en";
+  }
+
+  function getThinkingMessage(language) {
+    return {
+      tr: "Düşünüyorum...",
+      de: "Ich denke nach...",
+      el: "Σκέφτομαι...",
+      es: "Pensando...",
+      fa: "در حال فکر کردن...",
+      fr: "Je réfléchis...",
+      it: "Sto pensando...",
+      ja: "考えています...",
+      ko: "생각 중...",
+      pt: "Pensando...",
+      ru: "Думаю...",
+      zh: "正在思考...",
+      ar: "أفكر..."
+    }[language] || "Thinking...";
   }
 
   async function login(event) {
@@ -989,10 +1050,11 @@
     const input = event.currentTarget.elements.question;
     const question = input.value.trim();
     if (!question) return;
+    const responseLanguage = detectQuestionLanguage(question);
 
     const pending = [
       { role: "user", content: question },
-      { role: "assistant", content: "Düşünüyorum..." }
+      { role: "assistant", content: getThinkingMessage(responseLanguage) }
     ];
     renderChat(pending);
     input.value = "";
@@ -1004,7 +1066,7 @@
         headers: authHeaders({ "Content-Type": "application/json", Accept: "application/json" }),
         body: JSON.stringify({
           question,
-          language: document.body.dataset.language || "tr"
+          language: responseLanguage
         })
       });
       await loadChatHistory();
